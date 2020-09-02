@@ -33,7 +33,15 @@ public class TableModel implements javax.swing.table.TableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        return String.class;
+        switch (columnIndex){
+            case 0: return Integer.class;
+            case 1: return String.class;
+            case 2: return String.class;
+            case 3: return String.class;
+            case 4: return String.class;
+            case 5: return Integer.class;
+        }
+        return null;
     }
 
     @Override
@@ -45,12 +53,12 @@ public class TableModel implements javax.swing.table.TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Staff staff = lisfStaff.get(rowIndex);
         switch (columnIndex){
-            case 0: staff.getId();
-            case 1: staff.getName();
-            case 2: staff.getSurname();
-            case 3: staff.getPosition();
-            case 4: staff.getPhoneNumber();
-            case 5: staff.getAge();
+            case 0: return staff.getId();
+            case 1: return staff.getName();
+            case 2: return staff.getSurname();
+            case 3: return staff.getPosition();
+            case 4: return staff.getPhoneNumber();
+            case 5: return staff.getAge();
         }
         return null;
     }

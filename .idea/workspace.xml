@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ef83388-9d57-468b-b07b-f1a16b3c7461" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/miglayout-3.7.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/TableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,25 +92,29 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="666" y="324" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1598920144731" />
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1598928356056">
+    <state width="1877" height="163" key="GridCell.Tab.0.bottom" timestamp="1599016067667">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1598928356056" />
-    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1598928356055">
+    <state width="1877" height="163" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1599016067667" />
+    <state width="1877" height="163" key="GridCell.Tab.0.center" timestamp="1599016067667">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1598928356055" />
-    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1598928356055">
+    <state width="1877" height="163" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1599016067667" />
+    <state width="1877" height="163" key="GridCell.Tab.0.left" timestamp="1599016067667">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1598928356055" />
-    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1598928356056">
+    <state width="1877" height="163" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1599016067667" />
+    <state width="1877" height="163" key="GridCell.Tab.0.right" timestamp="1599016067667">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1598928356056" />
+    <state width="1877" height="163" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1599016067667" />
     <state x="440" y="157" key="SettingsEditor" timestamp="1598920153985">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="440" y="157" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1598920153985" />
+    <state x="771" y="498" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599016121218">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="771" y="498" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1160@0.0.1920.1160" timestamp="1599016121218" />
   </component>
 </project>

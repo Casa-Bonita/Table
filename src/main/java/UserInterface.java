@@ -13,18 +13,16 @@ public class UserInterface {
     Random rnd = new Random();
 
     private Dimension dimensionFrame;
-    private Dimension dimensionContent;
     private Dimension dimensionTable;
+    private Dimension dimensionScrollTable;
 
-    public UserInterface(Dimension dimensionFrame, Dimension dimensionContent, Dimension dimensionTable) {
+    public UserInterface(Dimension dimensionFrame, Dimension dimensionTable, Dimension dimensionScrollTable) {
         this.dimensionFrame = dimensionFrame;
-        this.dimensionContent = dimensionContent;
         this.dimensionTable = dimensionTable;
+        this.dimensionScrollTable = dimensionScrollTable;
     }
 
     public void createUI(){
-
-        MigLayout layout = new MigLayout();
 
         JFrame frame = new JFrame("Table");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,10 +31,10 @@ public class UserInterface {
         frame.setMinimumSize(new Dimension(dimensionFrame));
         frame.setMaximumSize(new Dimension(dimensionFrame));
         frame.setPreferredSize(new Dimension(dimensionFrame));
-        frame.setLayout(new MigLayout());
+        frame.setLayout(new FlowLayout((FlowLayout.CENTER)));
 
         List<Staff> listStaff = new ArrayList<>();
-        for (int i = 0; i < listStaff.size(); i++) {
+        for (int i = 0; i < 100; i++) {
             listStaff.add(new Staff(i,
                     "Имя " + i,
                     "Фамилия " + i,
@@ -49,25 +47,17 @@ public class UserInterface {
 
         TableModel tableModel = new TableModel(listStaff);
         JTable table = new JTable(tableModel);
-        table.setSize(new Dimension(dimensionContent));
-        table.setMinimumSize(new Dimension(dimensionContent));
-        table.setMaximumSize(new Dimension(dimensionContent));
-        table.setPreferredSize(new Dimension(dimensionContent));
+        table.setSize(new Dimension(dimensionTable));
+        table.setMinimumSize(new Dimension(dimensionTable));
+        table.setMaximumSize(new Dimension(dimensionTable));
+        table.setRowHeight(25);
 
 
-        JPanel content = new JPanel();
-        content.setSize(new Dimension(dimensionTable));
-        content.setMinimumSize(new Dimension(dimensionTable));
-        content.setMaximumSize(new Dimension(dimensionTable));
-        content.setPreferredSize(new Dimension(dimensionTable));
+        JScrollPane jscrlp = new JScrollPane(table);
+        jscrlp.setViewportView(table);
+        table.setPreferredScrollableViewportSize(new Dimension(dimensionScrollTable));
 
-
-
-
-
-
-        content.add(table);
-        frame.add(content);
+        frame.add(jscrlp);
         frame.setResizable(false);
         frame.setVisible(true);
     }
