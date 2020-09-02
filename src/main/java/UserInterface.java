@@ -24,6 +24,12 @@ public class UserInterface {
 
     public void createUI(){
 
+        MigLayout layout = new MigLayout(
+                "", // Layout Constraints
+                "[center]20[center]20[center]20[center]", // Column constraints
+                "[center]"); // Row constraints
+        Font font = new Font("Calibri", Font.BOLD, 20);
+
         JFrame frame = new JFrame("Table");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -31,7 +37,10 @@ public class UserInterface {
         frame.setMinimumSize(new Dimension(dimensionFrame));
         frame.setMaximumSize(new Dimension(dimensionFrame));
         frame.setPreferredSize(new Dimension(dimensionFrame));
-        frame.setLayout(new FlowLayout((FlowLayout.CENTER)));
+        frame.setLayout(layout);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(layout);
 
         List<Staff> listStaff = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
@@ -52,12 +61,69 @@ public class UserInterface {
         table.setMaximumSize(new Dimension(dimensionTable));
         table.setRowHeight(25);
 
-
         JScrollPane jscrlp = new JScrollPane(table);
         jscrlp.setViewportView(table);
         table.setPreferredScrollableViewportSize(new Dimension(dimensionScrollTable));
 
-        frame.add(jscrlp);
+        JButton button1 = new JButton("CREATE");
+        button1.setFont(font);
+        button1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent actionEvent){
+//                if(textField.getText().equals("ERROR")){
+//                    clearAll();
+//                }
+//                textField.setText(textField.getText() + 1);
+//                listData.add(textField.getText());
+            }
+        });
+
+        JButton button2 = new JButton("READ BY INDEX");
+        button2.setFont(font);
+        button2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent actionEvent){
+//                if(textField.getText().equals("ERROR")){
+//                    clearAll();
+//                }
+//                textField.setText(textField.getText() + 1);
+//                listData.add(textField.getText());
+            }
+        });
+
+        JButton button3 = new JButton("UPDATE");
+        button3.setFont(font);
+        button3.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent actionEvent){
+//                if(textField.getText().equals("ERROR")){
+//                    clearAll();
+//                }
+//                textField.setText(textField.getText() + 1);
+//                listData.add(textField.getText());
+            }
+        });
+
+        JButton button4 = new JButton("DELETE");
+        button4.setFont(font);
+        button4.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent actionEvent){
+//                if(textField.getText().equals("ERROR")){
+//                    clearAll();
+//                }
+//                textField.setText(textField.getText() + 1);
+//                listData.add(textField.getText());
+            }
+        });
+
+        panel.add(button1, "cell 0 1, w 180!, h 40!");
+        panel.add(button2, "cell 1 1, w 180!, h 40!");
+        panel.add(button3, "cell 2 1, w 180!, h 40!");
+        panel.add(button4, "cell 3 1, w 180!, h 40!");
+
+        frame.add(jscrlp, "wrap");
+        frame.add(panel);
         frame.setResizable(false);
         frame.setVisible(true);
     }
