@@ -1,6 +1,7 @@
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
@@ -15,6 +16,7 @@ public class UserInterface {
     private Dimension dimensionFrame;
     private Dimension dimensionTable;
     private Dimension dimensionScrollTable;
+    private DefaultTableModel defaultTableModel;
 
     public UserInterface(Dimension dimensionFrame, Dimension dimensionTable, Dimension dimensionScrollTable) {
         this.dimensionFrame = dimensionFrame;
@@ -70,11 +72,12 @@ public class UserInterface {
         button1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-//                if(textField.getText().equals("ERROR")){
-//                    clearAll();
-//                }
-//                textField.setText(textField.getText() + 1);
-//                listData.add(textField.getText());
+                int index = table.getSelectedRow();
+                defaultTableModel = (DefaultTableModel) table.getModel();
+                // Вставка новой строки после выделенной
+                defaultTableModel.insertRow(index + 1, new String[] {
+                        "Товар №" + String.valueOf(table.getRowCount()),
+                        "кг", "Цена"});
             }
         });
 
@@ -83,11 +86,25 @@ public class UserInterface {
         button2.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-//                if(textField.getText().equals("ERROR")){
-//                    clearAll();
-//                }
-//                textField.setText(textField.getText() + 1);
-//                listData.add(textField.getText());
+                button2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String input = JOptionPane.showInputDialog(
+                                UserInterface.this,
+                                "Введите ID для поиска");
+                        int inputId = Integer.parseInt(input);
+                        for (int i = 0; i < listStaff.size(); i++) {
+                            if (inputId == listStaff.get(i).getId()){
+                                JOptionPane.showInputDialog(null,
+                                        "Вы ввели ID", input);
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,
+                                        "Некорректный ввод");
+                                return;
+                            }
+                        }
+                    }
+                });
             }
         });
 
@@ -109,11 +126,11 @@ public class UserInterface {
         button4.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-//                if(textField.getText().equals("ERROR")){
-//                    clearAll();
-//                }
-//                textField.setText(textField.getText() + 1);
-//                listData.add(textField.getText());
+                int index = table.getSelectedRow();
+                System.out.println(index);
+                defaultTableModel = (DefaultTableModel) table.getModel();
+                defaultTableModel.removeRow(index);
+                listStaff.remove(index);
             }
         });
 

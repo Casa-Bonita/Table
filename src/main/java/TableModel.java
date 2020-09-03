@@ -1,7 +1,8 @@
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-public class TableModel implements javax.swing.table.TableModel {
+public class TableModel implements javax.swing.table.TableModel{
     public List<Staff> lisfStaff;
 
     public TableModel(List<Staff> lisfStaff) {
