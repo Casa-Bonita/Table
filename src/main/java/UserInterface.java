@@ -16,7 +16,7 @@ public class UserInterface {
     private Dimension dimensionFrame;
     private Dimension dimensionTable;
     private Dimension dimensionScrollTable;
-    private DefaultTableModel defaultTableModel;
+    private StaffTableModel staffTableModel;
 
     public UserInterface(Dimension dimensionFrame, Dimension dimensionTable, Dimension dimensionScrollTable) {
         this.dimensionFrame = dimensionFrame;
@@ -56,8 +56,8 @@ public class UserInterface {
                     rnd.nextInt(20) + 30));
         }
 
-        TableModel tableModel = new TableModel(listStaff);
-        JTable table = new JTable(tableModel);
+        StaffTableModel staffTableModel = new StaffTableModel(listStaff);
+        JTable table = new JTable(staffTableModel);
         table.setSize(new Dimension(dimensionTable));
         table.setMinimumSize(new Dimension(dimensionTable));
         table.setMaximumSize(new Dimension(dimensionTable));
@@ -67,26 +67,26 @@ public class UserInterface {
         jscrlp.setViewportView(table);
         table.setPreferredScrollableViewportSize(new Dimension(dimensionScrollTable));
 
-        JButton button1 = new JButton("CREATE");
-        button1.setFont(font);
-        button1.addActionListener(new ActionListener(){
+        JButton buttonCreate = new JButton("CREATE");
+        buttonCreate.setFont(font);
+        buttonCreate.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-                int index = table.getSelectedRow();
-                defaultTableModel = (DefaultTableModel) table.getModel();
-                // Вставка новой строки после выделенной
-                defaultTableModel.insertRow(index + 1, new String[] {
-                        "Товар №" + String.valueOf(table.getRowCount()),
-                        "кг", "Цена"});
+//                int index = table.getSelectedRow();
+//                defaultTableModel = (DefaultTableModel) table.getModel();
+//                // Вставка новой строки после выделенной
+//                defaultTableModel.insertRow(index + 1, new String[] {
+//                        "Товар №" + String.valueOf(table.getRowCount()),
+//                        "кг", "Цена"});
             }
         });
 
-        JButton button2 = new JButton("READ BY INDEX");
-        button2.setFont(font);
-        button2.addActionListener(new ActionListener(){
+        JButton buttonReadByIndex = new JButton("READ BY INDEX");
+        buttonReadByIndex.setFont(font);
+        buttonReadByIndex.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-                button2.addActionListener(new ActionListener() {
+                buttonReadByIndex.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         String input = JOptionPane.showInputDialog(
                                 UserInterface.this,
@@ -108,9 +108,9 @@ public class UserInterface {
             }
         });
 
-        JButton button3 = new JButton("UPDATE");
-        button3.setFont(font);
-        button3.addActionListener(new ActionListener(){
+        JButton buttonUpdate = new JButton("UPDATE");
+        buttonUpdate.setFont(font);
+        buttonUpdate.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
 //                if(textField.getText().equals("ERROR")){
@@ -121,25 +121,25 @@ public class UserInterface {
             }
         });
 
-        JButton button4 = new JButton("DELETE");
-        button4.setFont(font);
-        button4.addActionListener(new ActionListener(){
+        JButton buttonDelete = new JButton("DELETE");
+        buttonDelete.setFont(font);
+        buttonDelete.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
                 int index = table.getSelectedRow();
                 System.out.println(index);
-                defaultTableModel = (DefaultTableModel) table.getModel();
-                defaultTableModel.removeRow(index);
-                listStaff.remove(index);
+                staffTableModel.remove(index);
+                table.revalidate();
+                table.repaint();
             }
         });
 
-        panel.add(button1, "cell 0 1, w 180!, h 40!");
-        panel.add(button2, "cell 1 1, w 180!, h 40!");
-        panel.add(button3, "cell 2 1, w 180!, h 40!");
-        panel.add(button4, "cell 3 1, w 180!, h 40!");
+        panel.add(buttonCreate, "cell 0 1, w 180!, h 40!");
+        panel.add(buttonReadByIndex, "cell 1 1, w 180!, h 40!");
+        panel.add(buttonUpdate, "cell 2 1, w 180!, h 40!");
+        panel.add(buttonDelete, "cell 3 1, w 180!, h 40!");
 
-        frame.add(jscrlp, "wrap");
+        frame.add(jscrlp, "align center, wrap");
         frame.add(panel);
         frame.setResizable(false);
         frame.setVisible(true);

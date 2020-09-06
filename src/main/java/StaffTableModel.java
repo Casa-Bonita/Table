@@ -1,12 +1,21 @@
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.util.List;
 
-public class TableModel implements javax.swing.table.TableModel{
+public class StaffTableModel implements TableModel {
     public List<Staff> lisfStaff;
 
-    public TableModel(List<Staff> lisfStaff) {
+    public StaffTableModel(List<Staff> lisfStaff) {
         this.lisfStaff = lisfStaff;
+    }
+
+    public void add(Staff staff){
+        lisfStaff.add(staff);
+    }
+
+    public void remove (int index){
+        lisfStaff.remove(index);
     }
 
     @Override
