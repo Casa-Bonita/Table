@@ -6,6 +6,9 @@ public class Staff {
     private String phoneNumber;
     int age;
 
+    public Staff() {
+    }
+
     public Staff(int id, String name, String surname, String position, String phoneNumber, int age) {
         this.id = id;
         this.name = name;

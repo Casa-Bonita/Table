@@ -4,23 +4,27 @@ import javax.swing.table.TableModel;
 import java.util.List;
 
 public class StaffTableModel implements TableModel {
-    public List<Staff> lisfStaff;
+    public List<Staff> listStaff;
 
     public StaffTableModel(List<Staff> lisfStaff) {
-        this.lisfStaff = lisfStaff;
+        this.listStaff = lisfStaff;
     }
 
     public void add(Staff staff){
-        lisfStaff.add(staff);
+        listStaff.add(staff);
     }
 
     public void remove (int index){
-        lisfStaff.remove(index);
+        listStaff.remove(index);
+    }
+
+    public Staff get(int index){
+        return listStaff.get(index);
     }
 
     @Override
     public int getRowCount() {
-        return lisfStaff.size();
+        return listStaff.size();
     }
 
     @Override
@@ -61,7 +65,7 @@ public class StaffTableModel implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Staff staff = lisfStaff.get(rowIndex);
+        Staff staff = listStaff.get(rowIndex);
         switch (columnIndex){
             case 0: return staff.getId();
             case 1: return staff.getName();

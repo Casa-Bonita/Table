@@ -83,28 +83,52 @@ public class UserInterface {
 
         JButton buttonReadByIndex = new JButton("READ BY INDEX");
         buttonReadByIndex.setFont(font);
-        buttonReadByIndex.addActionListener(new ActionListener(){
+        buttonReadByIndex.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent){
-                buttonReadByIndex.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        String input = JOptionPane.showInputDialog(
-                                UserInterface.this,
-                                "Введите ID для поиска");
-                        int inputId = Integer.parseInt(input);
-                        for (int i = 0; i < listStaff.size(); i++) {
-                            if (inputId == listStaff.get(i).getId()){
-                                JOptionPane.showInputDialog(null,
-                                        "Вы ввели ID", input);
-                            }
-                            else{
-                                JOptionPane.showMessageDialog(null,
-                                        "Некорректный ввод");
+            public void actionPerformed(ActionEvent e) {
+                String input = JOptionPane.showInputDialog(
+                        "Введите ID для поиска");
+                try{
+                    int inputId = Integer.parseInt(input);
+                    Staff temp = new Staff();
+
+                    for (int i = 0; i < listStaff.size(); i++) {
+                        temp = listStaff.get(i);
+
+                        if (inputId == temp.getId()){
+                            int result = JOptionPane.showConfirmDialog(null,
+                                    "Вы ввели ID = " + inputId,
+                                    "Окно подтверждения",
+                                    JOptionPane.YES_NO_CANCEL_OPTION);
+
+                            if(result == JOptionPane.YES_OPTION){
+
+                                staffTableModel.get(inputId);
+
+                                table.revalidate();
+                                table.repaint();
+
                                 return;
+
+                            }else if (result == JOptionPane.NO_OPTION){
+                                JOptionPane.showMessageDialog(null,
+                                        "Повторите ввод индекса");
+
+                            }else if (result == JOptionPane.CANCEL_OPTION) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Поиск по индексу отменён");
                             }
                         }
                     }
-                });
+
+                    JOptionPane.showMessageDialog(null,
+                            "Индекс " + inputId + " отсутствует в таблице");
+
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null,
+                            "Некорректный ввод");
+                }
             }
         });
 
@@ -127,7 +151,6 @@ public class UserInterface {
             @Override
             public void actionPerformed(ActionEvent actionEvent){
                 int index = table.getSelectedRow();
-                System.out.println(index);
                 staffTableModel.remove(index);
                 table.revalidate();
                 table.repaint();
