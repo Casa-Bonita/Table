@@ -199,10 +199,15 @@ public class UserInterface {
         buttonReadByIndex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String input = JOptionPane.showInputDialog(
+                String inputString = JOptionPane.showInputDialog(
                         "Введите ID для поиска");
+
+                if(inputString == null || (inputString != null && ("".equals(inputString)))) {
+                    return;
+                }
+
                 try{
-                    int inputId = Integer.parseInt(input);
+                    int inputId = Integer.parseInt(inputString);
                     Staff temp = new Staff();
 
                     for (int i = 0; i < listStaff.size(); i++) {
@@ -226,10 +231,12 @@ public class UserInterface {
                             }else if (result == JOptionPane.NO_OPTION){
                                 JOptionPane.showMessageDialog(null,
                                         "Повторите ввод индекса");
+                                return;
 
                             }else if (result == JOptionPane.CANCEL_OPTION) {
                                 JOptionPane.showMessageDialog(null,
                                         "Поиск по индексу отменён");
+                                return;
                             }
                         }
                     }
