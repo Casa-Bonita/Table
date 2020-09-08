@@ -45,6 +45,8 @@ public class UserInterface {
         panel.setLayout(layout);
 
         List<Staff> listStaff = new ArrayList<>();
+
+        // создание начальных данных для таблицы
         for (int i = 0; i < 100; i++) {
             listStaff.add(new Staff(i,
                     "Имя " + i,
@@ -80,19 +82,23 @@ public class UserInterface {
                 String inputAgeString = "";
                 int inputAge = 0;
 
-
+                // ввод/созднаие поля Name, через Input Dialog, с кнопками "OK", "Cancel"
+                // обработка нажатия кнопки "OK"
                 inputName = JOptionPane.showInputDialog(
                         null,
                         "Введите поле Name");
 
+                // обработка нажатия кнопки "Cancel"
                 if(inputName == null || (inputName != null && ("".equals(inputName)))) {
                         return;
                     }
 
+                // подтверждение ввода, через ConfirmDialog, с кнопками "Yes" / "No"
                 int result = JOptionPane.showConfirmDialog(null,
                          inputName,"Вы ввели",
                         JOptionPane.YES_NO_OPTION);
 
+                // Обработка нажатия кнопки "Yes" (кнопка "No" реализована в блоке else, через оператор return)
                 if(result == JOptionPane.YES_OPTION){
                     inputSurname = JOptionPane.showInputDialog(
                             null,
@@ -163,7 +169,7 @@ public class UserInterface {
                                 }catch(Exception ex){
                                     ex.printStackTrace();
                                     JOptionPane.showMessageDialog(null,
-                                            "Некорректный ввод");
+                                            "Некорректный формат данных");
                                 }
                             }
 
@@ -234,7 +240,7 @@ public class UserInterface {
                 }catch(Exception ex){
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null,
-                            "Некорректный ввод");
+                            "Некорректный формат данных");
                 }
             }
         });
@@ -244,11 +250,166 @@ public class UserInterface {
         buttonUpdate.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-//                if(textField.getText().equals("ERROR")){
-//                    clearAll();
-//                }
-//                textField.setText(textField.getText() + 1);
-//                listData.add(textField.getText());
+
+                int inputId = 0;
+
+                // проверка, что введённый Id находится в пределах данных, которые представлены в таблице
+                String inputIdString = JOptionPane.showInputDialog(
+                        null,
+                        "Введите поле Id записи, которая будет изменена");
+
+                if(inputIdString == null || (inputIdString != null && ("".equals(inputIdString)))) {
+                    return;
+                }
+
+                int result = JOptionPane.showConfirmDialog(null,
+                        inputIdString,"Вы ввели",
+                        JOptionPane.YES_NO_OPTION);
+
+                if(result == JOptionPane.YES_OPTION){
+                    try{
+                        inputId = Integer.parseInt(inputIdString);
+                        if(inputId <= 0 || inputId >= listStaff.size()){
+                            JOptionPane.showMessageDialog(null,
+                                    "Данная запись отсутствует");
+                            return;
+                        }
+
+                        staffTableModel.get(inputId);
+
+                        table.revalidate();
+                        table.repaint();
+
+                    }catch(Exception ex){
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(null,
+                                "Некорректный формат данных");
+                        return;
+                    }
+                }
+                else{
+                    return;
+                }
+
+                String inputNameNew = "";
+                String inputSurnameNew = "";
+                String inputPositionNew = "";
+                String inputPhoneNumberNew = "";
+                String inputAgeStringNew = "";
+                int inputAgeNew = 0;
+
+                inputNameNew = JOptionPane.showInputDialog(
+                        null,
+                        "Введите новое значение для поля Name");
+
+                if(inputNameNew == null || (inputNameNew != null && ("".equals(inputNameNew)))) {
+                    return;
+                }
+
+                result = JOptionPane.showConfirmDialog(null,
+                        inputNameNew,"Вы ввели",
+                        JOptionPane.YES_NO_OPTION);
+
+                if(result == JOptionPane.YES_OPTION){
+                    inputSurnameNew = JOptionPane.showInputDialog(
+                            null,
+                            "Введите новое значение для поля Surname");
+
+                    if(inputSurnameNew == null || (inputSurnameNew != null && ("".equals(inputSurnameNew)))) {
+                        return;
+                    }
+
+                    result = JOptionPane.showConfirmDialog(null,
+                            inputSurnameNew, "Вы ввели",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if(result == JOptionPane.YES_OPTION){
+                        inputPositionNew = JOptionPane.showInputDialog(
+                                null,
+                                "Введите новое значение для поля Position");
+
+                        if(inputPositionNew == null || (inputPositionNew != null && ("".equals(inputPositionNew)))) {
+                            return;
+                        }
+
+                        result = JOptionPane.showConfirmDialog(null,
+                                inputPositionNew, "Вы ввели",
+                                JOptionPane.YES_NO_OPTION);
+
+                        if(result == JOptionPane.YES_OPTION){
+                            inputPhoneNumberNew = JOptionPane.showInputDialog(
+                                    null,
+                                    "Введите новое значение для поля PhoneNumber");
+
+                            if(inputPhoneNumberNew == null || (inputPhoneNumberNew != null && ("".equals(inputPhoneNumberNew)))) {
+                                return;
+                            }
+
+                            result = JOptionPane.showConfirmDialog(null,
+                                    inputPhoneNumberNew, "Вы ввели",
+                                    JOptionPane.YES_NO_OPTION);
+
+                            if(result == JOptionPane.YES_OPTION){
+                                inputAgeStringNew = JOptionPane.showInputDialog(
+                                        null,
+                                        "Введите новое значение для поля Age");
+
+                                if(inputAgeStringNew == null || (inputAgeStringNew != null && ("".equals(inputAgeStringNew)))) {
+                                    return;
+                                }
+
+                                try{
+                                    inputAgeNew = Integer.parseInt(inputAgeStringNew);
+                                    result = JOptionPane.showConfirmDialog(null,
+                                            inputAgeNew,"Вы ввели",
+                                            JOptionPane.YES_NO_OPTION);
+
+                                    if(result == JOptionPane.YES_OPTION){
+
+                                        Staff tempStaff = new Staff();
+
+                                        tempStaff = listStaff.get(inputId);
+
+                                        tempStaff.setName(inputNameNew);
+                                        tempStaff.setSurname(inputSurnameNew);
+                                        tempStaff.setPosition(inputPositionNew);
+                                        tempStaff.setPhoneNumber(inputPhoneNumberNew);
+                                        tempStaff.setAge(inputAgeNew);
+
+                                        table.revalidate();
+                                        table.repaint();
+                                    }
+
+                                    else{
+                                        return;
+                                    }
+
+                                }catch(Exception ex){
+                                    ex.printStackTrace();
+                                    JOptionPane.showMessageDialog(null,
+                                            "Некорректный ввод");
+                                }
+                            }
+
+                            else{
+                                return;
+                            }
+                        }
+
+                        else{
+                            return;
+                        }
+                    }
+
+                    else{
+                        return;
+                    }
+                }
+
+                else{
+                    return;
+                }
+
             }
         });
 
