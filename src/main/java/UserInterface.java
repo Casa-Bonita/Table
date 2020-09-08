@@ -72,12 +72,119 @@ public class UserInterface {
         buttonCreate.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-//                int index = table.getSelectedRow();
-//                defaultTableModel = (DefaultTableModel) table.getModel();
-//                // Вставка новой строки после выделенной
-//                defaultTableModel.insertRow(index + 1, new String[] {
-//                        "Товар №" + String.valueOf(table.getRowCount()),
-//                        "кг", "Цена"});
+
+                String inputName = "";
+                String inputSurname = "";
+                String inputPosition = "";
+                String inputPhoneNumber = "";
+                String inputAgeString = "";
+                int inputAge = 0;
+
+
+                inputName = JOptionPane.showInputDialog(
+                        null,
+                        "Введите поле Name");
+
+                if(inputName == null || (inputName != null && ("".equals(inputName)))) {
+                        return;
+                    }
+
+                int result = JOptionPane.showConfirmDialog(null,
+                         inputName,"Вы ввели",
+                        JOptionPane.YES_NO_OPTION);
+
+                if(result == JOptionPane.YES_OPTION){
+                    inputSurname = JOptionPane.showInputDialog(
+                            null,
+                            "Введите поле Surname");
+
+                    if(inputSurname == null || (inputSurname != null && ("".equals(inputSurname)))) {
+                        return;
+                    }
+
+                    result = JOptionPane.showConfirmDialog(null,
+                            inputSurname, "Вы ввели",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if(result == JOptionPane.YES_OPTION){
+                        inputPosition = JOptionPane.showInputDialog(
+                                null,
+                                "Введите поле Position");
+
+                        if(inputPosition == null || (inputPosition != null && ("".equals(inputPosition)))) {
+                            return;
+                        }
+
+                        result = JOptionPane.showConfirmDialog(null,
+                                inputPosition, "Вы ввели",
+                                JOptionPane.YES_NO_OPTION);
+
+                        if(result == JOptionPane.YES_OPTION){
+                            inputPhoneNumber = JOptionPane.showInputDialog(
+                                    null,
+                                    "Введите поле PhoneNumber");
+
+                            if(inputPhoneNumber == null || (inputPhoneNumber != null && ("".equals(inputPhoneNumber)))) {
+                                return;
+                            }
+
+                            result = JOptionPane.showConfirmDialog(null,
+                                    inputPhoneNumber, "Вы ввели",
+                                    JOptionPane.YES_NO_OPTION);
+
+                            if(result == JOptionPane.YES_OPTION){
+                                inputAgeString = JOptionPane.showInputDialog(
+                                        null,
+                                        "Введите поле Age");
+
+                                if(inputAgeString == null || (inputAgeString != null && ("".equals(inputAgeString)))) {
+                                    return;
+                                }
+
+                                try{
+                                    inputAge = Integer.parseInt(inputAgeString);
+                                    result = JOptionPane.showConfirmDialog(null,
+                                            inputAge,"Вы ввели",
+                                            JOptionPane.YES_NO_OPTION);
+
+                                    if(result == JOptionPane.YES_OPTION){
+                                        Staff tempStaff = new Staff(listStaff.size(), inputName, inputSurname, inputPosition, inputPhoneNumber, inputAge);
+
+                                        staffTableModel.add(tempStaff);
+
+                                        table.revalidate();
+                                        table.repaint();
+                                    }
+
+                                    else{
+                                        return;
+                                    }
+
+                                }catch(Exception ex){
+                                    ex.printStackTrace();
+                                    JOptionPane.showMessageDialog(null,
+                                            "Некорректный ввод");
+                                }
+                            }
+
+                            else{
+                                return;
+                            }
+                        }
+
+                        else{
+                            return;
+                        }
+                    }
+
+                    else{
+                        return;
+                    }
+                }
+
+                else{
+                    return;
+                }
             }
         });
 
