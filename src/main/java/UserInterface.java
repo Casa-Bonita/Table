@@ -373,15 +373,9 @@ public class UserInterface {
 
                                     if(result == JOptionPane.YES_OPTION){
 
-                                        Staff tempStaff = new Staff();
+                                        Staff newStaff = new Staff(inputId, inputNameNew, inputSurnameNew, inputPositionNew, inputPhoneNumberNew, inputAgeNew);
 
-                                        tempStaff = listStaff.get(inputId);
-
-                                        tempStaff.setName(inputNameNew);
-                                        tempStaff.setSurname(inputSurnameNew);
-                                        tempStaff.setPosition(inputPositionNew);
-                                        tempStaff.setPhoneNumber(inputPhoneNumberNew);
-                                        tempStaff.setAge(inputAgeNew);
+                                        staffTableModel.update(inputId, newStaff);
 
                                         table.revalidate();
                                         table.repaint();

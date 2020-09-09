@@ -22,6 +22,17 @@ public class StaffTableModel implements TableModel {
         return listStaff.get(index);
     }
 
+    public void update(int inputId, Staff newStaff){
+        Staff changedStaff = new Staff();
+        changedStaff = listStaff.get(inputId);
+
+        changedStaff.setName(newStaff.getName());
+        changedStaff.setSurname(newStaff.getSurname());
+        changedStaff.setPosition(newStaff.getPosition());
+        changedStaff.setPhoneNumber(newStaff.getPhoneNumber());
+        changedStaff.setAge(newStaff.getAge());
+    }
+
     @Override
     public int getRowCount() {
         return listStaff.size();
